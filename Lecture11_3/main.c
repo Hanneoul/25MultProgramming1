@@ -5,12 +5,20 @@
 #define FPS 60                        // 목표 프레임 수 (60 FPS)
 #define FRAME_TIME (1000 / FPS)      // 한 프레임에 소요되어야 할 시간 (밀리초 단위, 16.67ms 정도)
 
+int moveCursor(int x, int y)
+{
+    printf("\033[%d;%dH",y+1,x+1);
+}
+
 int main() {
+    int frameNum = 0;
     while (1) {  // 무한 루프: 게임 루프 실행
         clock_t frameStart = clock();  // 현재 시간 저장 (프레임 시작 시간)
 
         // --- 게임 로직 업데이트 및 렌더링 처리 부분 ---
-        printf("게임 프레임 처리\n");
+        moveCursor(0, 0);
+        printf("게임 프레임 %d번 처리\n", frameNum);
+        frameNum = frameNum + 1;
         // ------------------------------------------------
 
         clock_t frameEnd = clock();  // 프레임 작업 완료 후 현재 시간 저장
