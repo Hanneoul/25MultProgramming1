@@ -28,7 +28,7 @@ int main() {
     // 예시 작업: 시간이 조금 걸리는 루프 (시간 측정을 위한 더미 작업)
     while (i < 100000)
     {
-        //moveCursor(0, 0);
+        moveCursor(0, 0);
         printf("으히히힣 %d\n",i);
         i = i + 1;
     }
