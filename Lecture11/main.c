@@ -13,6 +13,11 @@
     - clock_t   : 시간 측정을 위한 타입. 정수형 기반이며 <time.h>에서 정의됨
 */
 
+int moveCursor(int x, int y)
+{
+    printf("\033[%d;%dH", y + 1, x + 1);
+}
+
 int main() {
     clock_t start, end;       // 시작과 끝 시간 저장용 변수
     double cpu_time_used;     // 경과 시간 (초) 저장용 변수
@@ -21,9 +26,10 @@ int main() {
 
     int i = 0;
     // 예시 작업: 시간이 조금 걸리는 루프 (시간 측정을 위한 더미 작업)
-    while (i < 100)
+    while (i < 100000)
     {
-        printf("으히히힣");
+        //moveCursor(0, 0);
+        printf("으히히힣 %d\n",i);
         i = i + 1;
     }
 
@@ -32,7 +38,7 @@ int main() {
     // 경과 시간 계산 (틱 수 차이 / 초당 틱 수)
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-    printf("작업에 걸린 시간: %.3f초\n", cpu_time_used);  // 결과 출력
+    printf("\n작업에 걸린 시간: %.3f초\n", cpu_time_used);  // 결과 출력
 
     return 0;
 }
